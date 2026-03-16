@@ -4,9 +4,10 @@ import { FeedService } from './feed.service';
 import { NewsModule } from 'src/news/news.module';
 import { GithubModule } from 'src/github/github.module';
 import { RedditModule } from 'src/reddit/reddit.module';
+import { StackoverflowModule } from 'src/stackoverflow/stackoverflow.module';
 
 @Module({
-  imports:[NewsModule, GithubModule, RedditModule],
+  imports:[NewsModule, GithubModule, RedditModule, StackoverflowModule],
   controllers: [FeedController],
   providers: [FeedService]
 })

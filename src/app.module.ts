@@ -6,6 +6,7 @@ import { RedditModule } from './reddit/reddit.module';
 import { FeedModule } from './feed/feed.module';
 
 import { TechModule } from './tech/tech.module';
+import { StackoverflowModule } from './stackoverflow/stackoverflow.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { TechModule } from './tech/tech.module';
     GithubModule,
     RedditModule,
     FeedModule,
-    TechModule
+    TechModule,
+    StackoverflowModule
   ],
 })
 export class AppModule {}

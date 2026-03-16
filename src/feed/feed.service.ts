@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { NewsService } from '../news/news.service';
 import { GithubService } from '../github/github.service';
 import { RedditService } from '../reddit/reddit.service';
+import { StackoverflowService } from '../stackoverflow/stackoverflow.service';
 
 @Injectable()
 export class FeedService {
@@ -9,7 +10,9 @@ export class FeedService {
   constructor(
     private newsService: NewsService,
     private githubService: GithubService,
-    private redditService: RedditService
+    private redditService: RedditService,
+    private stackoverflowService: StackoverflowService
+
   ) {}
 
   normalizeTech(tech: string) {
@@ -46,18 +49,20 @@ export class FeedService {
     const newsResults: any[] = [];
     const redditResults: any[] = [];
     const githubResults: any[] = [];
-
+    const stackoverflowResults: any[] = [];
     for (const word of keywords) {
 
-      const [news, reddit, github] = await Promise.all([
+      const [news, reddit, github, stack] = await Promise.all([
         this.newsService.getTechNews(word),
         this.redditService.getRedditPosts(word),
-        this.githubService.getReleases(word)
+        this.githubService.getReleases(word),
+        this.stackoverflowService.getQuestions(word)
       ]);
 
       newsResults.push(...news);
       redditResults.push(...reddit);
       githubResults.push(...github);
+      stackoverflowResults.push(...stack);
     }
 
     const developerSignals =
@@ -67,7 +72,8 @@ export class FeedService {
     const totalResults =
       newsResults.length +
       redditResults.length +
-      githubResults.length;
+      githubResults.length +
+      stackoverflowResults.length;
 
     if (developerSignals === 0) {
       return {
@@ -84,7 +90,8 @@ export class FeedService {
     return {
       news: this.removeDuplicates(newsResults),
       reddit: this.removeDuplicates(redditResults),
-      github: this.removeDuplicates(githubResults)
+      github: this.removeDuplicates(githubResults),
+      stackoverflow: this.removeDuplicates(stackoverflowResults)
     };
   }
 
