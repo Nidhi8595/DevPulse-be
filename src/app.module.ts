@@ -7,6 +7,8 @@ import { FeedModule } from './feed/feed.module';
 
 import { TechModule } from './tech/tech.module';
 import { StackoverflowModule } from './stackoverflow/stackoverflow.module';
+import { HackernewsModule } from './hackernews/hackernews.module';
+import { DevtoModule } from './devto/devto.module';
 
 @Module({
   imports: [
@@ -18,7 +20,9 @@ import { StackoverflowModule } from './stackoverflow/stackoverflow.module';
     RedditModule,
     FeedModule,
     TechModule,
-    StackoverflowModule
+    StackoverflowModule,
+    HackernewsModule,
+    DevtoModule
   ],
 })
 export class AppModule {}
