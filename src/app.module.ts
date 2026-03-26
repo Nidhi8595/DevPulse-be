@@ -9,6 +9,8 @@ import { TechModule } from './tech/tech.module';
 import { StackoverflowModule } from './stackoverflow/stackoverflow.module';
 import { HackernewsModule } from './hackernews/hackernews.module';
 import { DevtoModule } from './devto/devto.module';
+import { GithubTrendingModule } from './github-trending/github-trending.module';
+import { NpmModule } from './npm/npm.module';
 
 @Module({
   imports: [
@@ -22,7 +24,9 @@ import { DevtoModule } from './devto/devto.module';
     TechModule,
     StackoverflowModule,
     HackernewsModule,
-    DevtoModule
+    DevtoModule,
+    GithubTrendingModule,
+    NpmModule
   ],
 })
 export class AppModule {}

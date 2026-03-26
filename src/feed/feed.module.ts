@@ -7,8 +7,10 @@ import { RedditModule } from 'src/reddit/reddit.module';
 import { StackoverflowModule } from 'src/stackoverflow/stackoverflow.module';
 import { HackernewsModule } from 'src/hackernews/hackernews.module';
 import { DevtoModule } from 'src/devto/devto.module';
+import { GithubTrendingModule } from '../github-trending/github-trending.module';
+import { NpmModule } from '../npm/npm.module';
 @Module({
-  imports:[NewsModule, GithubModule, RedditModule, StackoverflowModule, HackernewsModule, DevtoModule],
+  imports:[NewsModule, GithubModule, RedditModule, StackoverflowModule, HackernewsModule, DevtoModule, GithubTrendingModule, NpmModule],
   controllers: [FeedController],
   providers: [FeedService]
 })
