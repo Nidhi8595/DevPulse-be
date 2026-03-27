@@ -6,8 +6,8 @@ async function bootstrap() {
 
   app.enableCors({
     origin: ['http://localhost:4200',
-      'https://dev-pulse-fe.vercel.app/',
-      /\.vercel\.app$ /,
+      'https://dev-pulse-fe.vercel.app',
+      /\.vercel\.app$/,
     ],
     credentials: true,
     methods: ['GET', 'POST', 'OPTIONS'],
